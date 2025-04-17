@@ -28,7 +28,10 @@ public class PlayerMovement : NetworkBehaviour
 
     private void Update()
     {
-        
+        if (!IsOwner) { return; }
+
+        float zRotation = previousMovementInput.x * -turningRate * Time.deltaTime;
+        bodyTransform.Rotate(0f, 0f, zRotation);
     }
 
     private void HandleMove(Vector2 movementInput)
